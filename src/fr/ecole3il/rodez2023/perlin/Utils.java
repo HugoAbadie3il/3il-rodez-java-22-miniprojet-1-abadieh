@@ -48,18 +48,22 @@ public class Utils {
      * @author philibert roquart, fainéant
      */
     public static int[] melanger(int[] tab, long seed) {
-        // Mélanger le tableau de permutation en utilisant 
-        // ...
-    	// Bon, je le ferai plus tard, je vais réviser l'espagnol
-    	// Je mets ça, ça marchera bien en attendant
-    	// tant pis
+        Random rnd = new Random(seed);
+        int j;
+        int tmp;
+        for (int i = tab.length - 1; i >= 1; i--){
+            j = rnd.nextInt(0,i + 1);
+            tmp = tab[j];
+            tab[j] = tab[i];
+            tab[i] = tmp;
+        }
         return tab;
     }
 
     /**
      * Retourne le plus petit des deux nombres fournis.
-     * @param width Le premier nombre.
-     * @param height Le deuxième nombre.
+     * @param a Le premier nombre.
+     * @param b Le deuxième nombre.
      * @return Le plus petit des deux nombres.
      * 
      * @author philibert roquart, fainéant
