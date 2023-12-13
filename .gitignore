@@ -25,4 +25,8 @@ replay_pid*
 
 # Editor files
 .idea/
-*.iml
+3il-rodez-java-22-miniprojet-1-abadieh.iml
+
+# Executable
+out/
+data/

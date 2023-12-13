@@ -1,4 +1,4 @@
-package fr.ecole3il.rodez2023.perlin.gui;
+package fr.ecole3il.rodez2023.perlin.gui.tmp;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
