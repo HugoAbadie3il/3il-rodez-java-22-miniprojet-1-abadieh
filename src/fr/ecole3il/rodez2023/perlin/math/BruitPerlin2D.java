@@ -31,6 +31,8 @@ public class BruitPerlin2D extends Bruit2D {
 		this.permutation = PERMUTATION;
 	}
 
+	// melanger dans Utils
+
 	@Override
 	public double bruit2D(double x, double y) {
 		double tempX, tempY;
@@ -38,8 +40,8 @@ public class BruitPerlin2D extends Bruit2D {
 		double unit = 1.0f / (double) Math.sqrt(2);
 		double tmp, s, t, u, v, Cx, Cy, Li1, Li2;
 		// Adapter pour la résolution
-		x /= resolution;
-		y /= resolution;
+		x /= getResolution();
+		y /= getResolution();
 
 		// Obtenir les coordonnées de la grille associées à (x, y)
 		x0 = (int) (x);

@@ -49,7 +49,7 @@ public class Utils {
      */
     public static int[] melanger(int[] tab, long seed) {
         // Mélanger le tableau de permutation en utilisant 
-    	// ...
+        // ...
     	// Bon, je le ferai plus tard, je vais réviser l'espagnol
     	// Je mets ça, ça marchera bien en attendant
     	// tant pis
@@ -64,9 +64,8 @@ public class Utils {
      * 
      * @author philibert roquart, fainéant
      */
-    public static double min(int width, int height) {
-    	// pas le temps, j'ai mes exos de chimie à finir
-    	return 1;
+    public static double min(double a, double b) {
+    	return a < b ? a : b;
     }
 
     /**
