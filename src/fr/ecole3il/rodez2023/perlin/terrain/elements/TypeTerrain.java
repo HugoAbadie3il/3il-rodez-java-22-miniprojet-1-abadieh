@@ -7,13 +7,15 @@ import java.awt.image.BufferedImage;
 public enum TypeTerrain {
     COLLINES,
     DESERT,
-    FORET_CONIFÈRES,
+    FORET_CONIFERES,
     FORET_FEUILLUS,
     MARAIS,
     MONTAGNE,
     OCEAN,
     PLAINE,
     TOUNDRA;
+
+    private String nomFichier;
 
     @Override
     public String toString() {
@@ -22,7 +24,7 @@ public enum TypeTerrain {
         {
             case COLLINES -> res.append("collines");
             case DESERT -> res.append("desert");
-            case FORET_CONIFÈRES -> res.append("forêt de conifères");
+            case FORET_CONIFERES -> res.append("forêt de conifères");
             case FORET_FEUILLUS -> res.append("forêt de feuillus");
             case MARAIS -> res.append("marais");
             case MONTAGNE -> res.append("montagne");
@@ -34,21 +36,7 @@ public enum TypeTerrain {
     }
 
     public BufferedImage getImage(){
-        StringBuilder filename = new StringBuilder();
-        switch (this)
-        {
-            case COLLINES -> filename.append("hills");
-            case DESERT -> filename.append("desert");
-            case FORET_CONIFÈRES -> filename.append("coniferous_forest");
-            case FORET_FEUILLUS -> filename.append("deciduous_forest");
-            case MARAIS -> filename.append("marsh");
-            case MONTAGNE -> filename.append("mountain");
-            case OCEAN -> filename.append("ocean");
-            case PLAINE -> filename.append("plain");
-            case TOUNDRA -> filename.append("toundra");
-        }
-        filename.append(".png");
-        return Utils.chargerTuile(filename.toString());
+        return Utils.chargerTuile(nomFichier);
     }
 
 }

@@ -17,3 +17,7 @@ Ce faisant il y aurait beaucoup de duplication de code inutile et on se perdrait
  - Quel type utilisez vous ? (Dans le cadre des attributs de la classe Terrain)
 
 On cherche à avoir des attributs suffisament précises (au moins en double précision), on déclarera donc les attributs de type double.
+
+ - Pourquoi sortir, selon vous, ce bout d'algorithme de la classe ?
+
+Sortir ce bout d'algorithme permet de rendre le code plus clair et lisible en spécialisant le code déterminant le type de terrain dans une classe designée pour.
