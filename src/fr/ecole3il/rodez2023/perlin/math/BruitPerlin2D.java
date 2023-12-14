@@ -29,7 +29,7 @@ public class BruitPerlin2D extends Bruit2D {
 	@Override
 	public double bruit2D(double x, double y) {
 		double distanceX, distanceY;
-		int x0, x1, y0, y1;
+		int x0, y0;
 		int ii, jj, gi0, gi1, gi2, gi3;
 		double unit = 1.0f / Math.sqrt(2);
 		double s, t, u, v, Cx, Cy, Li1, Li2;
@@ -39,19 +39,17 @@ public class BruitPerlin2D extends Bruit2D {
 
 		// Obtenir les coordonnées de la grille associées à (x, y)
 		x0 = (int) Math.floor(x);
-		x1 = x0 + 1;
 		y0 = (int) Math.floor(y);
-		y1 = y0 + 1;
 
 		// Masquage pour récupérer les indices de permutation
 		ii = x0 & 255;
 		jj = y0 & 255;
 
 		// Récupérer les indices de gradient associés aux coins du quadrilatère
-		gi0 = permutation[ii + permutation[jj]] % 8;
-		gi1 = permutation[ii + 1 + permutation[jj]] % 8;
-		gi2 = permutation[ii + permutation[jj + 1]] % 8;
-		gi3 = permutation[ii + 1 + permutation[jj + 1]] % 8;
+		gi0 = (permutation[ii] + permutation[jj]) % 8;
+		gi1 = (permutation[ii] + permutation[jj + 1]) % 8;
+		gi2 = (permutation[ii + 1] + permutation[jj]) % 8;
+		gi3 = (permutation[ii + 1] + permutation[jj + 1]) % 8;
 
 		// Récupérer les distances de x et y
 		distanceX = x - x0;
@@ -60,11 +58,11 @@ public class BruitPerlin2D extends Bruit2D {
 		// Récupérer les vecteurs de gradient et effectuer des interpolations pondérées
 		s = GRADIENT_2D[gi0][0] * distanceX + GRADIENT_2D[gi0][1] * distanceY;
 
-		t = GRADIENT_2D[gi1][0] * (distanceX + 1) + GRADIENT_2D[gi1][1] * distanceY;
+		t = GRADIENT_2D[gi1][0] * distanceX + GRADIENT_2D[gi1][1] * (distanceY - 1);
 
-		u = GRADIENT_2D[gi2][0] * distanceX + GRADIENT_2D[gi2][1] * (distanceY + 1);
+		u = GRADIENT_2D[gi2][0] * (distanceX - 1) + GRADIENT_2D[gi2][1] * (distanceY);
 
-		v = GRADIENT_2D[gi3][0] * (distanceX + 1) + GRADIENT_2D[gi3][1] * (distanceY + 1);
+		v = GRADIENT_2D[gi3][0] * (distanceX - 1) + GRADIENT_2D[gi3][1] * (distanceY - 1);
 
 		// Interpolations pour lisser les valeurs obtenues
 		Cx = 3 * distanceX * distanceX - 2 * distanceX * distanceX * distanceX;
