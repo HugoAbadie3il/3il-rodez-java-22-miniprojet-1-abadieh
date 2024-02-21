@@ -28,11 +28,25 @@ public class Carte {
 
         //TO TEST IF I DON'T MISS THE FIRST DATA
         s.nextLine();
+        int hydrometrie, altitude, temperature;
+        int x = 0;
+        int y = 0;
 
         while (s.hasNextLine())
         {
             // INSERT INTO TABLE
+            altitude = s.nextInt();
+            hydrometrie = s.nextInt();
+            temperature = s.nextInt();
+            if (x == largeur)
+            {
+                x = 0;
+                y++;
+            }
+            terrains[x][y] = new Terrain(hydrometrie, altitude, temperature);
+            s.nextLine();
         }
+        s.close();
     }
 
     public String getNom() {
