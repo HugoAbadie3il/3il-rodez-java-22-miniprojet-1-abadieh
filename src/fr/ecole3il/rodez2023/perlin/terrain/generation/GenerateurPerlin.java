@@ -9,6 +9,9 @@ import fr.ecole3il.rodez2023.perlin.terrain.elements.Terrain;
  */
 public class GenerateurPerlin extends GenerateurCarte{
 
+    private BruitPerlin2D bruitPerlinHydro;
+    private BruitPerlin2D bruitPerlinAlt;
+    private BruitPerlin2D bruitPerlinTemp;
         /**
         * Constructeur du générateur de carte.
         *
@@ -16,24 +19,20 @@ public class GenerateurPerlin extends GenerateurCarte{
         */
         public GenerateurPerlin(long graine) {
             super(graine);
+            this.bruitPerlinHydro = new BruitPerlin2D(this.getGraine(), 1);
+            this.bruitPerlinAlt = new BruitPerlin2D(this.getGraine() * 2, 1);
+            this.bruitPerlinTemp = new BruitPerlin2D(this.getGraine() * 4, 1);
         }
 
         @Override
         protected Terrain genererTerrain(int i, int j, int largeur, int hauteur) {
-            double x = (double) i / largeur;
-            double y = (double) j / hauteur;
-
-            BruitPerlin2D bruitPerlinHydro = new BruitPerlin2D(this.getGraine(), 1);
-            BruitPerlin2D bruitPerlinAlt = new BruitPerlin2D(this.getGraine() * 2, 1);
-            BruitPerlin2D bruitPerlinTemp = new BruitPerlin2D(this.getGraine() * 4, 1);
+            double x = (double) i / (double) largeur;
+            double y = (double) j / (double) hauteur;
 
             double altitude = bruitPerlinAlt.bruit2D(x, y);
             double hydrometrie = bruitPerlinHydro.bruit2D(x, y);
             double temperature = bruitPerlinTemp.bruit2D(x, y);
 
-            hydrometrie = (hydrometrie + 1) / 2;
-            temperature = (temperature + 1) / 2;
-
-            return new Terrain(hydrometrie, altitude, temperature);
+            return new Terrain(altitude, hydrometrie, temperature);
         }
 }

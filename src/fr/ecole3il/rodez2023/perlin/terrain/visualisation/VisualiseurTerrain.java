@@ -43,11 +43,11 @@ public class VisualiseurTerrain {
         double hydrometrie = terrain.getHydrometrie();
 
         if (hydrometrie < 0.33) {
-            return HydrometrieAffiche.SEC;
-        } else if (hydrometrie < 0.66) {
-            return HydrometrieAffiche.MOYEN;
-        } else {
             return HydrometrieAffiche.HUMIDE;
+        } else if (hydrometrie < 0.66) {
+            return HydrometrieAffiche.SEC;
+        } else {
+            return HydrometrieAffiche.MOYEN;
         }
     }
 

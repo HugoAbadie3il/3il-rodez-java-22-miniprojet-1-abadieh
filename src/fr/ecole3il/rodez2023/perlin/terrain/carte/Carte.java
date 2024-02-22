@@ -31,24 +31,16 @@ public class Carte {
         this.hauteur = s.nextInt();
 
         s.nextLine();
+        this.terrains = new Terrain[largeur][hauteur];
         double hydrometrie, altitude, temperature;
-        int x = 0;
-        int y = 0;
 
-        // May miss the last data
-        while (s.hasNextLine())
-        {
-            altitude = s.nextDouble();
-            hydrometrie = s.nextDouble();
-            temperature = s.nextDouble();
-            if (x == largeur)
-            {
-                x = 0;
-                y++;
+        for (int y = 0; y < hauteur; y++) {
+            for (int x = 0; x < largeur; x++) {
+                altitude = Double.parseDouble(s.next());
+                hydrometrie = Double.parseDouble(s.next());
+                temperature = Double.parseDouble(s.next());
+                terrains[x][y] = new Terrain(altitude, hydrometrie, temperature);
             }
-            terrains[x][y] = new Terrain(hydrometrie, altitude, temperature);
-            s.nextLine();
-            x++;
         }
         s.close();
     }

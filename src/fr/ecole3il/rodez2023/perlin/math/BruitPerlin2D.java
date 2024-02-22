@@ -101,4 +101,8 @@ public class BruitPerlin2D extends Bruit2D {
 
 		return (Li1 + Cy * (Li2 - Li1)) * unit;
 	}
+
+	private double produitScalaire(float[] gradient, double x, double y) {
+		return gradient[0] * x + gradient[1] * y;
+	}
 }

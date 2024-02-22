@@ -13,7 +13,7 @@ public class BruitAleatoire extends Bruit2D {
     public BruitAleatoire(long graine, double resolution)
     {
         super(graine, resolution);
-        rnd = new Random(graine);
+        rnd = new Random();
     }
 
     @Override
