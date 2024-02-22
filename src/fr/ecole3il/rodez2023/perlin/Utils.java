@@ -52,7 +52,7 @@ public class Utils {
         int j;
         int tmp;
         for (int i = tab.length - 1; i >= 1; i--){
-            j = rnd.nextInt(0,tab.length);
+            j = rnd.nextInt(i + 1);
             tmp = tab[j];
             tab[j] = tab[i];
             tab[i] = tmp;

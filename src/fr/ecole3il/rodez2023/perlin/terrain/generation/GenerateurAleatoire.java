@@ -1,5 +1,6 @@
 package fr.ecole3il.rodez2023.perlin.terrain.generation;
 
+import fr.ecole3il.rodez2023.perlin.math.BruitAleatoire;
 import fr.ecole3il.rodez2023.perlin.terrain.elements.Terrain;
 
 import java.util.Random;
@@ -24,8 +25,12 @@ public class GenerateurAleatoire extends GenerateurCarte {
      */
     @Override
     protected Terrain genererTerrain(int i, int j, int largeur, int hauteur) {
-        Random random = new Random(this.getGraine());
-        return new Terrain(random.nextDouble(), random.nextDouble(), random.nextDouble());
+        BruitAleatoire bruit = new BruitAleatoire(this.getGraine(), 1.0);
+        double bruitAltitude = bruit.bruit2D(-1.0, 1.0);
+        double bruitHydrometrie = bruit.bruit2D(0.0,1.0);
+        double bruitTemperature = bruit.bruit2D(0.0,1.0);
+
+        return new Terrain(bruitAltitude, bruitHydrometrie, bruitTemperature);
     }
 
 

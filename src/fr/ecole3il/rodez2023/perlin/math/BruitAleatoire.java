@@ -18,6 +18,6 @@ public class BruitAleatoire extends Bruit2D {
 
     @Override
     public double bruit2D(double x, double y) {
-        return rnd.nextDouble();
+        return rnd.nextDouble(x, y);
     }
 }

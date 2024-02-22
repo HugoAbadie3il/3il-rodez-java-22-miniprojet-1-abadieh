@@ -21,7 +21,10 @@ public class Terrain {
         return temperature;
     }
 
-    public Terrain(double hydrometrie, double altitude, double temperature) throws MauvaiseValeurException {
+    public Terrain(double altitude, double hydrometrie, double temperature) throws MauvaiseValeurException {
+        hydrometrie = Math.abs(hydrometrie);
+        temperature = Math.abs(temperature);
+
         if (hydrometrie < 0 || hydrometrie > 1)
             throw new MauvaiseValeurException("L'hydrométrie doit être comprise entre 0 et 1");
         else
