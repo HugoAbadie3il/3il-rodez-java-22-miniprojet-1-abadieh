@@ -215,9 +215,9 @@ public class VisualiseurCarteTerrain extends JFrame {
 
 			// Code pour générer la carte en fonction des paramètres choisis
 			if (generateurSelectionne.equals("GenerateurPerlin")) {
-				carte = new Carte("Nouvelle carte", largeur, hauteur, new GenerateurPerlin(graine));
+				carte = new Carte(largeur, hauteur, "Nouvelle carte", new GenerateurPerlin(graine));
 			} else {
-				carte = new Carte("Nouvelle carte", largeur, hauteur,
+				carte = new Carte(largeur, hauteur, "Nouvelle carte",
 						new GenerateurAleatoire(graine));
 			}
 

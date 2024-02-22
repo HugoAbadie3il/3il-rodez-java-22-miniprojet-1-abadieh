@@ -20,24 +20,27 @@ public class Carte {
         this.terrains = generateurCarte.genererCarte(largeur, hauteur);
     }
 
+    /**
+     * Constructeur de la classe Carte.
+     * @param donneesCarte Les données de la carte.
+     */
     public Carte(String donneesCarte){
         Scanner s = new Scanner(donneesCarte);
         this.nom = s.nextLine();
         this.largeur = s.nextInt();
         this.hauteur = s.nextInt();
 
-        //TO TEST IF I DON'T MISS THE FIRST DATA
         s.nextLine();
-        int hydrometrie, altitude, temperature;
+        double hydrometrie, altitude, temperature;
         int x = 0;
         int y = 0;
 
+        // May miss the last data
         while (s.hasNextLine())
         {
-            // INSERT INTO TABLE
-            altitude = s.nextInt();
-            hydrometrie = s.nextInt();
-            temperature = s.nextInt();
+            altitude = s.nextDouble();
+            hydrometrie = s.nextDouble();
+            temperature = s.nextDouble();
             if (x == largeur)
             {
                 x = 0;
@@ -45,6 +48,7 @@ public class Carte {
             }
             terrains[x][y] = new Terrain(hydrometrie, altitude, temperature);
             s.nextLine();
+            x++;
         }
         s.close();
     }
